@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Context-Aware Access Control</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    margin:0;
+    background:#f4f6f9;
+}
+
+/* Header */
+
+.header{
+    background:linear-gradient(90deg,#007bff,#00c6ff);
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.header h1{
+    margin:0;
+}
+
+.header p{
+    margin-top:8px;
+}
+
+/* Main Container */
+
+.container{
+    width:80%;
+    margin:auto;
+    margin-top:30px;
+}
+
+/* Access Panel */
+
+.panel{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Inputs */
+
+select{
+    padding:6px;
+    margin-right:10px;
+}
+
+/* Button */
+
+button{
+    background:#28a745;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:5px;
+    cursor:pointer;
+    width:100%;
+    margin-top:15px;
+    font-size:16px;
+}
+
+button:hover{
+    background:#218838;
+}
+
+/* Result Box */
+
+.result{
+    margin-top:20px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+/* Info Cards */
+
+.cards{
+    display:flex;
+    gap:20px;
+    margin-top:30px;
+}
+
+.card{
+    flex:1;
+    padding:20px;
+    border-radius:10px;
+    color:white;
+}
+
+.blue{
+    background:#3498db;
+}
+
+.orange{
+    background:#f39c12;
+}
+
+.green{
+    background:#2ecc71;
+}
+
+.card h3{
+    margin-top:0;
+}
+
+</style>
+
+<script>
+
+function checkAccess(){
+
+var role=document.getElementById("role").value;
+var device=document.getElementById("device").value;
+var location=document.getElementById("location").value;
+var risk=document.getElementById("risk").value;
+
+var result=document.getElementById("result");
+var suggestion=document.getElementById("suggestion");
+
+if(role=="Admin"){
+    result.innerHTML="🟢 Access Granted : Admin Privileges";
+}
+else if(risk=="High"){
+    result.innerHTML="🔴 Access Denied : High Risk Application";
+}
+else{
+    result.innerHTML="🟡 Access Granted : Limited User Access";
+}
+
+suggestion.innerHTML=
+"Device Used : "+device+
+"<br>Location : "+location+
+"<br>Risk Level : "+risk;
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="header">
+<h1>Context-Aware Access Control System</h1>
+<p>Secure access based on identity, device, location and application risk</p>
+</div>
+
+<div class="container">
+
+<div class="panel">
+
+<h2>Secure Access Portal</h2>
+
+User Role
+<select id="role">
+<option>User</option>
+<option>Admin</option>
+</select>
+
+Device
+<select id="device">
+<option>Mobile</option>
+<option>Laptop</option>
+<option>Public Computer</option>
+</select>
+
+Location
+<select id="location">
+<option>India</option>
+<option>Foreign</option>
+</select>
+
+Application Risk
+<select id="risk">
+<option>Low</option>
+<option>Medium</option>
+<option>High</option>
+</select>
+
+<button onclick="checkAccess()">Check Access</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+
+<!-- Feature Cards -->
+
+<div class="cards">
+
+<div class="card blue">
+<h3>Security Context</h3>
+<p>
+User Identity Verification<br>
+Device Type Validation<br>
+Location Based Access<br>
+Application Risk Analysis
+</p>
+</div>
+
+<div class="card orange">
+<h3>System Monitoring</h3>
+<p>
+Real-time Risk Evaluation<br>
+Device Authentication<br>
+Session Monitoring<br>
+Threat Detection
+</p>
+</div>
+
+<div class="card green">
+<h3>User Details</h3>
+<p id="suggestion">
+Device Used : -<br>
+Location : -<br>
+Risk Level : -
+</p>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
